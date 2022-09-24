@@ -73,6 +73,7 @@ public class ApiPubSVCImpl implements ApiPubSVC{
   @Override
   public List<PFacility> apiCall2(Set<String> facIds) {
     String xmlStr = "";
+
     List<PFacility> res = null;
     try {
 
@@ -83,6 +84,7 @@ public class ApiPubSVCImpl implements ApiPubSVC{
         XmlMapper xmlMapper = new XmlMapper();
         res = xmlMapper.readValue(xmlStr, new TypeReference<List<PFacility>>(){});
         apiPubDAO.savePFacility(res);
+
       }
     } catch (Exception e) {
       e.printStackTrace();

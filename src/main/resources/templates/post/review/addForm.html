@@ -9,6 +9,34 @@
 </head>
 
 <body>
-  등록화면
+<h3>후기등록</h3>
+<hr>
+<form id="addForm" action="" method="post" th:object="${form}">
+
+    <div><label th:for="reviewPostTitle">제목</label></div>
+    <div>
+      <input type="text" th:field="*{reviewPostTitle}">
+    </div>
+
+  <div>
+    <label for="">관람일시</label>
+    <input type="date">
+    <select name="event" id="event">
+      <option value="">==선택==</option>
+      <option value="">거주자 우선주차 구역</option>
+    </select>
+  </div>
+  <div><textarea name="" id="reviewContent" cols="30" rows="10" placeholder="내용을 입력하세요." th:field="*{reviewPostContent}"></textarea></div>
+
+</form>
+<div>
+  <button id="addBtn" type="button">등록</button>
+  <button type="reset">취소</button>
+</div>
+<script>
+  addBtn.addEventListener('click', e => {
+    document.getElementById('addForm').submit();
+  });
+</script>
 </body>
 </html>

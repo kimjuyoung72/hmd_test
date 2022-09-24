@@ -26,12 +26,12 @@ public class ApiPubDAOImpl implements ApiPubDAO{
 
       sql.append("insert into p_event (mt20id,prfnm,prfpdfrom,prfpdto,fcltynm,");
       sql.append("genrenm,prfstate,mt10id,prfcast,prfruntime,");
-      sql.append("prfage,pcseguidance,dtguidance) ");
-      sql.append("values(?,?,?,?,?,?,?,?,?,?,?,?,?) ");
+      sql.append("prfage,pcseguidance,poster,dtguidance) ");
+      sql.append("values(?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
 
       jt.update(sql.toString(), pEvent.getMt20id(), pEvent.getPrfnm(), pEvent.getPrfpdfrom(), pEvent.getPrfpdto(),
           pEvent.getFcltynm(), pEvent.getGenrenm(), pEvent.getPrfstate(), pEvent.getMt10id(), pEvent.getPrfcast(),
-          pEvent.getPrfruntime(), pEvent.getPrfage(), pEvent.getPcseguidance(), pEvent.getDtguidance());
+          pEvent.getPrfruntime(), pEvent.getPrfage(), pEvent.getPcseguidance(), pEvent.getPoster(), pEvent.getDtguidance());
       result = pEvent.getMt10id();
     }
 

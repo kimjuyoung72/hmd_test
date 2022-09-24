@@ -1,23 +1,23 @@
 package com.kh.hanmadang.domain.svc.post;
 
-import com.kh.hanmadang.domain.PromInfo;
+import com.kh.hanmadang.web.form.PromotionForm;
 
 import java.util.List;
 
-public interface PromPostSVC {
+public interface PromotionPostSVC {
 
   /**
    * 목록
    * @return 홍보글목록
    */
-  List<PromInfo> all();
+  List<PromotionForm> all();
 
   /**
    * 등록
    * @param promInfo 홍보 게시물 정보
    * @return 글번호(아이디)
    */
-  Long add(PromInfo promInfo);
+  Long add(PromotionForm promInfo);
 
   /**
    * 수정
@@ -25,12 +25,12 @@ public interface PromPostSVC {
    * @param promInfo 홍보 게시물 정보
    * @return 홍보 게시물 정보
    */
-  PromInfo edit(Long pid, PromInfo promInfo);
+  PromotionForm edit(Long pid, PromotionForm promInfo);
 
   /**
    * 조회
    * @param pid 글번호
    * @return 홍보 게시물 정보
    */
-  PromInfo findById(Long pid);
+  PromotionForm findById(Long pid);
 }

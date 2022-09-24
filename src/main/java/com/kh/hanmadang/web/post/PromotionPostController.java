@@ -1,6 +1,6 @@
 package com.kh.hanmadang.web.post;
 
-import com.kh.hanmadang.domain.EventInfo;
+import com.kh.hanmadang.web.form.EventInfoForm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @Controller
 @RequestMapping("/promotions")
-public class PromPostController {
+public class PromotionPostController {
 
-  @GetMapping
-  public String all() {
 
-    return "post/promotion/all";
-  }
   @GetMapping("/add")
   public String addForm() {
 
@@ -33,7 +29,7 @@ public class PromPostController {
     return "post/promotion/editForm";
   }
   @PostMapping("/{id}/edit")
-  public String edit(Long pid, EventInfo eventInfo) {
+  public String edit(Long pid, EventInfoForm eventInfo) {
 
     return "redirect:/promotions/{id}";
   }
@@ -41,5 +37,10 @@ public class PromPostController {
   public String findById(Long pid) {
 
     return "post/promotion/detailForm";
+  }
+  @GetMapping
+  public String all() {
+
+    return "post/promotion/all";
   }
 }

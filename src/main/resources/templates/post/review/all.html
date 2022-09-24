@@ -9,6 +9,37 @@
 </head>
 
 <body>
-  목록화면
+  <div class="review_wrap">
+    <h3>후기게시판</h3>
+    <hr>
+    <table>
+      <thead>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>등록일</th>
+        <th>좋아요</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="review : ${list}">
+        <td th:text="${review.reviewPostId}">1</td>
+        <td><a href="/reviews/21" th:href="@{/reviews/{pid}(pid=${review.reviewPostId})}"  th:text="${review.reviewPostTitle}">이봐 김서방</a></td>
+        <td th:text="${review.reviewPostWriter}">김재미</td>
+        <td th:text="${review.udate}">2022.09.24 13:40</td>
+        <td th:text="${review.reviewPostGood}">10000</td>
+      </tr>
+      </tbody>
+    </table>
+    <hr>
+     <div><button id="addBtn">글쓰기</button></div>
+  </div>
+  </div>
+  <script>
+    addBtn.addEventListener('click',e=>{
+      location.href = '/reviews/add';
+    });
+  </script>
 </body>
 </html>

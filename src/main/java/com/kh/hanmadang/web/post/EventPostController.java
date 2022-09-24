@@ -1,6 +1,6 @@
 package com.kh.hanmadang.web.post;
 
-import com.kh.hanmadang.domain.EventInfo;
+import com.kh.hanmadang.web.form.EventInfoForm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +33,7 @@ public class EventPostController {
     return "post/event/editForm";
   }
   @PostMapping("/{id}/edit")
-  public String edit(Long pid, EventInfo eventInfo) {
+  public String edit(Long pid, EventInfoForm eventInfo) {
 
     return "redirect:/events/{id}";
   }

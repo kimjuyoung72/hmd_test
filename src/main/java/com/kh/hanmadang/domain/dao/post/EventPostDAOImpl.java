@@ -1,6 +1,6 @@
 package com.kh.hanmadang.domain.dao.post;
 
-import com.kh.hanmadang.domain.EventInfo;
+import com.kh.hanmadang.web.form.EventInfoForm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
@@ -10,22 +10,22 @@ import java.util.List;
 @Repository
 public class EventPostDAOImpl implements EventPostDAO{
   @Override
-  public List<EventInfo> all() {
+  public List<EventInfoForm> all() {
     return null;
   }
 
   @Override
-  public Long add(EventInfo eventInfo) {
+  public Long add(EventInfoForm eventInfo) {
     return null;
   }
 
   @Override
-  public EventInfo edit(Long pid, EventInfo eventInfo) {
+  public EventInfoForm edit(Long pid, EventInfoForm eventInfo) {
     return null;
   }
 
   @Override
-  public EventInfo findById(Long pid) {
+  public EventInfoForm findById(Long pid) {
     return null;
   }
 }
