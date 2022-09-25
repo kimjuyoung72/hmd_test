@@ -1,6 +1,8 @@
 package com.kh.hanmadang.domain.svc.post;
 
-import com.kh.hanmadang.web.form.EventInfoForm;
+import com.kh.hanmadang.domain.EventInfo;
+import com.kh.hanmadang.domain.dao.post.EventPostDAO;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -8,24 +10,18 @@ import java.util.List;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class EventPostSVCImpl implements EventPostSVC{
-  @Override
-  public List<EventInfoForm> all() {
-    return null;
-  }
 
+  private final EventPostDAO eventPostDAO;
+  /**
+   * 목록
+   *
+   * @return 후기글목록
+   */
   @Override
-  public Long add(EventInfoForm eventInfo) {
-    return null;
-  }
-
-  @Override
-  public EventInfoForm edit(Long pid, EventInfoForm eventInfo) {
-    return null;
-  }
-
-  @Override
-  public EventInfoForm findById(Long pid) {
-    return null;
+  public List<EventInfo> all() {
+    log.info("size={}", eventPostDAO.all().size());
+    return eventPostDAO.all();
   }
 }

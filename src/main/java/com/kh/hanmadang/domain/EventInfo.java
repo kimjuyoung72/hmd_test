@@ -1,4 +1,4 @@
-package com.kh.hanmadang.web.form;
+package com.kh.hanmadang.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class EventInfoForm {
+public class EventInfo {
   private Long eventId;        //내부관리용 ID
   private String mt20id;        // MT20ID VARCHAR2(12 BYTE)	No		1
   private String prfnm;         // PRFNM	VARCHAR2(100 BYTE)	Yes		2

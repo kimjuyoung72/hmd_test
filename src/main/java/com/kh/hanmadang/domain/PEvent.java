@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class PEvent {
-
+  private Long eventId;        //내부관리용 ID
   private String mt20id;        // MT20ID VARCHAR2(12 BYTE)	No		1
   private String prfnm;         // PRFNM	VARCHAR2(100 BYTE)	Yes		2
   private String prfpdfrom;     // PRFPDFROM	VARCHAR2(10 BYTE)	Yes		3

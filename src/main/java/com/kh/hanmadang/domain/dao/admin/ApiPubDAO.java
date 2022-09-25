@@ -19,4 +19,9 @@ public interface ApiPubDAO {
    * @return 등록건수
    */
   int savePFacility(List<PFacility> pFacilities);
+
+  /**
+   * 게시물 아이디생성
+   */
+  Long generatePubPostId();
 }

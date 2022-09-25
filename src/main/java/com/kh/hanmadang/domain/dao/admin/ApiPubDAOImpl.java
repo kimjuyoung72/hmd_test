@@ -21,15 +21,16 @@ public class ApiPubDAOImpl implements ApiPubDAO{
     String result = null;
 
     StringBuffer sql = new StringBuffer();
+    Long eventId = generatePubPostId();
 
     for (PEvent pEvent : pEvents) {
 
-      sql.append("insert into p_event (mt20id,prfnm,prfpdfrom,prfpdto,fcltynm,");
+      sql.append("insert into p_event (event_id, mt20id,prfnm,prfpdfrom,prfpdto,fcltynm,");
       sql.append("genrenm,prfstate,mt10id,prfcast,prfruntime,");
       sql.append("prfage,pcseguidance,poster,dtguidance) ");
-      sql.append("values(?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
+      sql.append("values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
 
-      jt.update(sql.toString(), pEvent.getMt20id(), pEvent.getPrfnm(), pEvent.getPrfpdfrom(), pEvent.getPrfpdto(),
+      jt.update(sql.toString(), eventId, pEvent.getMt20id(), pEvent.getPrfnm(), pEvent.getPrfpdfrom(), pEvent.getPrfpdto(),
           pEvent.getFcltynm(), pEvent.getGenrenm(), pEvent.getPrfstate(), pEvent.getMt10id(), pEvent.getPrfcast(),
           pEvent.getPrfruntime(), pEvent.getPrfage(), pEvent.getPcseguidance(), pEvent.getPoster(), pEvent.getDtguidance());
       result = pEvent.getMt10id();
@@ -68,4 +69,13 @@ public class ApiPubDAOImpl implements ApiPubDAO{
     return result;
   }
 
+  /**
+   * 게시물 아이디생성
+   */
+  @Override
+  public Long generatePubPostId() {
+    String sql = "select p_event_post_id_seq.nextval from dual ";
+    Long pubPostId = jt.queryForObject(sql, Long.class);
+    return pubPostId;
+  }
 }
