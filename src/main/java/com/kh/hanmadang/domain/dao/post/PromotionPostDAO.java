@@ -1,6 +1,6 @@
 package com.kh.hanmadang.domain.dao.post;
 
-import com.kh.hanmadang.web.form.PromotionForm;
+import com.kh.hanmadang.domain.Promotion;
 
 import java.util.List;
 
@@ -8,34 +8,44 @@ public interface PromotionPostDAO {
 
   /**
    * 등록
-   * @param promInfo 홍보 게시물 정보
-   * @return 글번호(아이디)
+   * @param promotion 홍보 게시물 정보
+   * @return 등록건수
    */
-  Long add(PromotionForm promInfo);
+  int add(Promotion promotion);
 
   /**
    * 수정
    * @param pid 글번호
-   * @param promInfo 홍보 게시물 정보
-   * @return 홍보 게시물 정보
+   * @param promotion 홍보 게시물 정보
+   * @return 수정건수
    */
-  PromotionForm edit(Long pid, PromotionForm promInfo);
+  int edit(Long pid, Promotion promotion);
 
   /**
    * 조회
+   *
    * @param pid 글번호
    * @return 홍보 게시물 정보
    */
-  PromotionForm findById(Long pid);
+  Promotion findByPostId(Long pid);
+
+
+  /**
+   * 리뷰 삭제
+   * @param pid 글번호
+   * @return 삭제건수
+   */
+  int delete(Long pid);
 
   /**
    * 목록
-   * @return 홍보글목록
+   * @return 후기글목록
    */
-  List<PromotionForm> all();
+  List<Promotion> all();
+
 
   /**
-   * 홍보게시판 글번호 생성
+   * 상품아이디생성
    */
-  Long generatePromotionId();
+  Long generateReviewId();
 }

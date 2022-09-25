@@ -6,6 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>후기</title>
+  <style>
+    #pid {
+      display: none;
+    }
+    #pid input {
+      border: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -14,7 +22,7 @@
 <div class="product-body">
   <form id="editForm" action="" th:action th:method="post" th:object="${form}" enctype="multipart/form-data">
     <!--    <div><label for="">아이디</label></div>-->
-    <div><input type="text" th:field="*{reviewPostId}" readonly="readonly"></div>
+    <div id="pid"><input th:field="*{reviewPostId}" readonly="readonly"></div>
     <!--    <div><label for="">상품명</label></div>-->
     <div><input type="text" th:field="*{reviewPostWriter}"></div>
     <!--    <div><label for="">수량</label></div>-->

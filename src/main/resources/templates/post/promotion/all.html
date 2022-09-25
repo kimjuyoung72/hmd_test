@@ -9,6 +9,42 @@
 </head>
 
 <body>
-  목록화면
+<div class="review_wrap">
+  <h3>홍보게시판</h3>
+  <hr>
+  <table>
+    <thead>
+    <tr>
+      <th>번호</th>
+      <th>제목</th>
+      <th>작성자</th>
+      <th>시작일</th>
+      <th>마감일</th>
+      <th>등록일</th>
+      <th>좋아요</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="prm : ${list}">
+      <td th:text="${prm.promotionPostId}">1</td>
+      <td><a href="/promotions/41" th:href="@{/promotions/{pid}(pid=${prm.promotionPostId})}"  th:text="${prm.promotionPostTitle}">이봐 김서방</a></td>
+      <td th:text="${prm.promotionPostWriter}">김재미</td>
+      <td th:text="${prm.promotionStartDate}">2022.09.25</td>
+      <td th:text="${prm.promotionEndDate}">2022.09.25</td>
+      <td th:text="${prm.udate}">2022.09.24 13:40</td>
+      <td th:text="${prm.promotionPostGood}">10000</td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+  <div><button id="addBtn">글쓰기</button></div>
+</div>
+</div>
+<script>
+    addBtn.addEventListener('click',e=>{
+      location.href = '/promotions/add';
+    });
+  </script>
+</body>
 </body>
 </html>

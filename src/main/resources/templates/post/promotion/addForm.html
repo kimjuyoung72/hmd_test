@@ -9,6 +9,34 @@
 </head>
 
 <body>
-  등록화면
+<h3>홍보등록</h3>
+<hr>
+<form id="addForm" action="" method="post" th:object="${form}">
+
+  <div>
+    <div><label th:for="promotionPostTitle">작성자</label>
+      <input type="text" th:field="*{promotionPostWriter}" size="100">
+    </div>
+    <div><label th:for="promotionPostTitle">제목</label>
+      <input type="text" th:field="*{promotionPostTitle}" size="100">
+  </div>
+
+  <div>
+    <label for="">시작일</label><input type="date" th:field="*{promotionStartDate}">
+    <label for="">마감일</label><input type="date" th:field="*{promotionEndDate}">
+    <label for="">참가비</label><input type="text" th:field="*{promotionEntFee}">
+  </div>
+  <div><textarea name="" id="promotionContent" cols="100" rows="30" placeholder="내용을 입력하세요." th:field="*{promotionPostContent}"></textarea></div>
+
+</form>
+<div>
+  <button id="addBtn" type="button">등록</button>
+  <button type="reset">취소</button>
+</div>
+<script>
+  addBtn.addEventListener('click', e => {
+    document.getElementById('addForm').submit();
+  });
+</script>
 </body>
 </html>

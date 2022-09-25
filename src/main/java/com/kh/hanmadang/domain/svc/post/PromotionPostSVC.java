@@ -1,36 +1,44 @@
 package com.kh.hanmadang.domain.svc.post;
 
-import com.kh.hanmadang.web.form.PromotionForm;
+import com.kh.hanmadang.domain.Promotion;
 
 import java.util.List;
 
 public interface PromotionPostSVC {
 
   /**
-   * 목록
-   * @return 홍보글목록
-   */
-  List<PromotionForm> all();
-
-  /**
    * 등록
-   * @param promInfo 홍보 게시물 정보
-   * @return 글번호(아이디)
+   *
+   * @param promotion 홍보 게시물 정보
+   * @return 등록건수(아이디)
    */
-  Long add(PromotionForm promInfo);
+  Promotion add(Promotion promotion);
 
   /**
    * 수정
    * @param pid 글번호
-   * @param promInfo 홍보 게시물 정보
-   * @return 홍보 게시물 정보
+   * @param promotion 홍보 게시물 정보
+   * @return 수정건수
    */
-  PromotionForm edit(Long pid, PromotionForm promInfo);
+  int edit(Long pid, Promotion promotion);
 
   /**
    * 조회
    * @param pid 글번호
    * @return 홍보 게시물 정보
    */
-  PromotionForm findById(Long pid);
+  Promotion findById(Long pid);
+
+  /**
+   * 글삭제
+   * @param pid 글번호
+   * @return 삭제건수
+   */
+  int delete(Long pid);
+
+  /**
+   * 목록
+   * @return 홍보 글목록
+   */
+  List<Promotion> all();
 }
