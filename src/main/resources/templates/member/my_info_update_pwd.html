@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="울산 문화 정보 사이트 메인 화면 기본 문서">
+  <meta name="keywords" content="울산,ulsan,information,홍보,advertisement,이벤트,event">
+  <meta name="author" content="KH java 할수있조">
+  <title>울산한마당 | 내정보수정</title>
+
+
+</head>
+<th:block layout:fragment="content">
+  <!-- </header> -->
+  <main id="myInfoMain">
+    <div class="container">
+      <div class="info__title">
+        <h2 id="title">내 정보</h2>
+      </div>
+
+      <div class="info__state">
+        <h3 id="state">내 정보 수정</h3>
+      </div>
+
+      <div class="center__container">
+        <div class="container__div">
+          <span class="common pwd__title">내 정보 수정</span>
+          <span class="common pwd__sub">내 정보 수정을 희망하신다면 비밀번호를 입력하여 확인해주십시오</span>
+          <div class="common pwd__box">
+            <form class="box">
+              <div class="input__pwd">
+                <label for="box__input">비밀번호 입력 </label><input type="text" id="box__input">
+              </div>
+              <div class="input__result">비밀번호가 일치하지 않습니다</div>
+              <div class="btn__box">
+                <button class="btn btn_confirm"><a href="my_info_update.html">확인</a></button>
+                <button class="btn btn_back"><a href="my_info.html">돌아가기</a></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</th:block>
+</html>

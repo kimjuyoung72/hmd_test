@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <th:block th:replace="layout/config::configFragment"></th:block>
+</head>
+<body>
+<div id="wrapper">
+  <th:block  th:if="${!session.isEmpty()}">
+    <th:block th:replace="layout/header_afterLogin::headerFragment"></th:block>
+  </th:block>
+  <th:block  th:unless="${!session.isEmpty()}">
+    <th:block th:replace="layout/header_beforeLogin::headerFragment"></th:block>
+  </th:block>
+  <main layout:fragment="content"></main>
+  <th:block th:replace="layout/aside::asideFragment"></th:block>
+  <th:block th:replace="layout/footer::footerFragment"></th:block>
+</div>
+</body>
+</html>

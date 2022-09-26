@@ -1,6 +1,6 @@
 package com.kh.hanmadang.domain.svc.admin;
 
-import com.kh.hanmadang.domain.Member;
+import com.kh.hanmadang.domain.dao.member.Member;
 
 import java.util.List;
 

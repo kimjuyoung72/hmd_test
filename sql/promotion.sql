@@ -3,7 +3,7 @@
 
 create table promotion(
     promotion_post_id       number(10),       --글번호 ID
-    promotion_post_titel    varchar2(100),      --제목
+    promotion_post_title    varchar2(100),      --제목
     promotion_post_link     varchar2(100),      --홍보이미지 링크
     promotion_post_content  clob,               --내용
     promotion_post_writer   varchar2(20),       --작성자

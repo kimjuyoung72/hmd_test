@@ -6,7 +6,7 @@ drop table review;
 create table review(
     review_from_id      varchar2(12),       --관련 공연 ID
     review_post_id      number(10),       --글번호 ID, pk
-    review_post_titel   varchar2(100),      --제목
+    review_post_title   varchar2(100),      --제목
     review_post_link    varchar2(100),      --홍보이미지 링크
     review_post_content clob,               --내용
     rview_post_writer   varchar2(20),       --작성자

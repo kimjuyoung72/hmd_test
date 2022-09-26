@@ -1,0 +1,181 @@
+/* 상단 제목 */
+.info__title {            
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+}
+/* 현재 내정보 위치 (내정보/내정보수정/활동내역(내가쓴글,댓글,좋아요목록)) */
+.info__state {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 50px;
+  padding-left: 10px;
+  border-bottom: 2px solid gray;
+}
+/* 클릭한 메뉴 강조 */
+.information .info__list .tab__state .on {
+  text-decoration: underline;
+  font-weight: bold;
+}
+/* 내정보 목록, 상세 정보 */
+.information{
+  display: flex;
+  
+}
+/* 내정보 공통 */
+.information .info__index {
+  height: 600px;
+  margin: 10px;
+  border-radius: 5px;
+}
+/* 목록 */
+.information .info__list {
+  flex: 2;
+  border: 1px solid gray;
+}
+.information .info__list .list__title {
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 10px 5px;
+  border-bottom : 1px solid gray;
+}
+/* .information .info__list .tab__state {
+  display: flex;
+} */
+/* 사이드 메뉴 css */
+.information .info__list .tab__state .info__side_menu {
+  padding: 15px 5px 15px 10px;
+  border: 1px solid darkgrey;
+  /* border-radius: 5px; */
+  
+}
+.information .info__list .tab__state .info__side_menu #toc-toggle:hover {
+  cursor: pointer;
+  color: orangered;
+}
+/* 활동내역 드롭다운 */
+.information .info__list .tab__state .dropmenu {
+  padding-left: 10px;
+  margin-top: 10px;
+  /* outline: 1px solid red; */
+  font-size: 0.8em;
+}
+.information .info__list .tab__state .dropmenu li {
+  margin: 5px 0;
+}
+.information .info__list .tab__state .info__side_menu #toc-toggle #arrow {
+  /* color: blue; */
+  height: 15px;
+  width: 15px;
+}
+
+/* 상세 정보  (form은  내정보에서 사용중)*/
+.information .info__detail {            
+  flex: 8;            
+  border: 1px solid gray;
+}
+
+/* ////////////////////////////////////////////////////////////// */
+/* 내정보수정, 회원탈퇴, 로그인등 공통 css */
+
+/* 전체 div  */
+.center__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: 1px solid gray;
+  margin: 20px 0;
+  padding: 30px 0;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+}
+/* 내부 박스 (title, sub, pwd__box) */
+.center__container .container__div {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  outline: 1px solid gray;
+}
+
+/* 내부 공통 */
+.center__container .container__div .common {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+/* 내용은 같지만 class명이 다른 css [ login, update_pwd, mem_leave 순서 ]  */
+
+/* 내부 제목 (내 정보 수정) */
+.center__container .container__div .login__title,
+.center__container .container__div .pwd__title,
+.center__container .container__div .leave__title,
+.center__container .container__div .signin__title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* [ update_pwd, mem_leave 순서 ] */
+/* 내부 서브제목 (내정보수정을 희망하신다면~) */
+.center__container .container__div .pwd__sub,
+.center__container .container__div .leave__sub {
+  font-size: 0.8em;
+}
+/* form 박스 */
+.center__container .container__div .pwd__box .box,
+.center__container .container__div .leave__box .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  outline: 1px solid gray;
+  width: 90%;
+  padding: 20px 0;
+}
+
+/* 비밀번호 입력 박스 css */
+.center__container .container__div .pwd__box .box .input__pwd, 
+.center__container .container__div .leave__box .box .input__pwd {
+  margin : 0 0 10px 15px;
+}
+.center__container .container__div .pwd__box .box .input__pwd #box__input, 
+.center__container .container__div .leave__box .box .input__pwd #box__input {
+  width: 200px;
+
+}
+.center__container .container__div .pwd__box .box .input__result, 
+.center__container .container__div .leave__box .box .input__result {
+  margin : 0 0 10px 15px;
+  font-size: 0.6em;
+  font-style: italic;
+  color: red;
+}
+
+.center__container .container__div .pwd__box .box .btn__box,
+.center__container .container__div .leave__box .box .btn__box {
+  display: flex;
+  justify-content: space-around;
+}
+.center__container .container__div .pwd__box .box .btn,
+.center__container .container__div .leave__box .box .btn {
+  width: 100px;
+  border: none;
+}
+
+
+/* input block css */
+/* 3칸 input box */
+.three--block {
+    width: 60px;
+}
+
+/* 2칸 input box */
+.two--block {
+    width: 120px;
+}
+/* 1칸 input box */
+.one--block {
+    width: 200px;
+}

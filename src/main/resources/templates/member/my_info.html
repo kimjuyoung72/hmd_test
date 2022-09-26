@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="울산 문화 정보 사이트 메인 화면 기본 문서">
+  <meta name="keywords" content="울산,ulsan,information,홍보,advertisement,이벤트,event">
+  <meta name="author" content="KH java 할수있조">
+  <title>울산한마당 | 내정보화면</title>
+
+  <style>
+        .information .info__detail .detail__li{
+            display: flex;
+            margin: 20px 15px;
+        }
+
+        .information .info__detail .ul_ .detail__li .detail__span{
+            flex: 1;
+        }
+        .information .info__detail .ul_ .detail__li .detail__span_index {
+            flex: 2;
+        }
+    </style>
+</head>
+<!--<span th:if="${!session.isEmpty()}" th:text="${session.LoginMember.email}"></span>-->
+<th:block layout:fragment="content">
+  <main id="myInfoMain">
+    <div class="container">
+      <div class="info__title">
+        <h2 id="title">내 정보</h2>
+      </div>
+
+      <div class="info__state">
+        <h3 id="state">내 정보</h3>
+      </div>
+
+      <div class="information">
+        <div class="info__index info__list">
+          <div class="list__title">
+            <p>목록</p>
+          </div>
+          <div class="tab__state">
+            <ul class="info__side">
+              <li class="info__side_menu on">
+                <a class="" href="my_info.html" th:href="@{/afterLogin/info}">내 정보</a>
+              </li>
+              <li class="info__side_menu">
+                <a class="" href="my_info_update_pwd.html" th:href="@{/afterLogin/info_update}">내 정보 수정</a>
+              </li>
+              <li class="info__side_menu" >
+                                    <span id="toc-toggle" onclick="openCloseToc()">
+                                            활동내역
+                                            <img src="../img/arrow_down.png" id="arrow">
+                                    </span>
+                <ul class="dropmenu" id="toc-content" style="display: none;">
+                  <li><a href="my_info_history_post.html">내가 쓴 글</a></li>
+                  <li><a href="my_info_history_comment.html">내가 쓴 댓글</a></li>
+                  <li><a href="my_info_history_likelist.html">좋아요 목록</a></li>
+                </ul>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+        <!--  -->
+        <div class="info__index info__detail">
+          <ul class="ul_">
+            <li class="detail__li">
+              <span class="detail__span">아이디</span>
+              <span class="detail__span_index"
+                    th:if="${!session.isEmpty()}"
+                    th:text="${session.LoginMember.email}">USER_ID</span>
+            </li>
+            <li class="detail__li">
+              <span class="detail__span">이름</span>
+              <span class="detail__span_index"
+                    th:if="${!session.isEmpty()}"
+                    th:text="${session.LoginMember.name}">USER_NAME</span>
+            </li>
+            <li class="detail__li">
+              <span class="detail__span">닉네임</span>
+              <span class="detail__span_index"
+                    th:if="${!session.isEmpty()}"
+                    th:text="${session.LoginMember.nickname}">USER_NICKNAME</span>
+            </li>
+            <li class="detail__li">
+              <span class="detail__span">전화번호</span>
+              <span class="detail__span_index"
+                    th:if="${!session.isEmpty()}"
+                    th:text="${session.LoginMember.phone}">USER_TEL</span>
+            </li>
+            <li class="detail__li">
+              <span class="detail__span">생년월일</span>
+              <span class="detail__span_index"
+                    th:if="${!session.isEmpty()}"
+                    th:text="${#temporals.format(session.LoginMember.birthday, 'yyyy-MM-dd')}">BIRTHDAY</span>
+            </li>
+            <li class="detail__li">
+              <span class="detail__span">SMS 서비스</span>
+              <span class="detail__span_index" th:if="${!session.isEmpty()}">
+                                <th:block th:if="${session.LoginMember.sms_service}">
+                                    SMS 서비스를 받고 있습니다
+                                </th:block>
+                                <th:block th:unless="${session.LoginMember.sms_service}">
+                                    SMS 서비스를 받지 않습니다
+                                </th:block>
+                            </span>
+            </li>
+            <li class="detail__li">
+              <span class="detail__span">이메일 서비스</span>
+              <span class="detail__span_index" th:if="${!session.isEmpty()}">
+                                <th:block th:if="${session.LoginMember.email_service}">
+                                    이메일 서비스를 받고 있습니다
+                                </th:block>
+                                <th:block th:unless="${session.LoginMember.email_service}">
+                                    이메일 서비스를 받지 않습니다
+                                </th:block>
+                            </span>
+            </li>
+            <li class="detail__li">
+              <span class="detail__span">가입일</span>
+              <span class="detail__span_index"
+                    th:if="${!session.isEmpty()}"
+                    th:text="${#temporals.format(session.LoginMember.cdate, 'yyyy-MM-dd')}">CREATE_DAY</span>
+            </li>
+          </ul>
+        </div>
+        <!--  -->
+      </div>
+    </div>
+
+
+  </main>
+</th:block>
+
+</html>

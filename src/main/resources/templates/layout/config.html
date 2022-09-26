@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<!-- 공통 css js 파일 -->
+<th:block th:fragment="configFragment">
+  <!--  js  -->
+  <script th:src="@{/js/my_info_menu.js}"></script>
+  <!-- layout_main_grid.css -->
+  <link rel="stylesheet" href="../../static/css/my_info.css" th:href="@{/css/my_info.css}">
+  <link rel="stylesheet" href="../../static/css/common.css" th:href="@{/css/common.css}">
+
+  <script src="https://kit.fontawesome.com/bb2dfe5236.js" crossorigin="anonymous"></script>
+</th:block>
+</html>

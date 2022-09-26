@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="headerFragment">
+  <!-- <header id="mainHeader"> -->
+  <!-- 로그인 하기 이전 Header layout -->
+  <div class="header upper">
+    <a href="main_logout.html" th:href="@{/afterLogin}" id="logo">
+      <h1>울산 한마당</h1>
+    </a>
+    <div id="topMenu">
+      <!--             <a id="memberMenu" href="#">회원정보</a>-->
+      <div id="register">
+        <span th:if="${!session.isEmpty()}" th:text="|${session.LoginMember.nickname} 님|"></span>
+        <a id="sign" href="#" th:href="@{/afterLogin/info}">내정보</a>
+        <a id="log" href="logout.html" th:href="@{/logout}">로그아웃</a>
+        <!-- <a href="#" id="hamburger"><i class="fa-solid fa-bars"></i> -->
+        <div id="hamburger"><i class="fa-solid fa-bars"></i>
+          <ul class="hamburger__menu">
+            <li class="hamburger__menu_top"><a href="login.html" th:href="@{/logout}" class="item1">로그아웃</a></li>
+            <!--                        <li class="hamburger__menu_top"><a href="sign_in.html" class="item2">회원가입</a></li>-->
+            <li class="hamburger__menu_top"><a href="#" class="item3">회원메뉴</a></li>
+
+            <!--  thymeleaf href 수정 필요함 -->
+            <li class="hamburger__menu_gnb"><a href="event_info.html" class="item1">공연전시</a></li>
+            <li class="hamburger__menu_gnb"><a href="promotion.html" class="item2">홍보</a></li>
+            <li class="hamburger__menu_gnb"><a href="review.html" class="item3">후기</a></li>
+            <li class="hamburger__menu_gnb"><a href="map.html" class="item4">문화지도</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header lower">
+    <nav id="gnb">
+      <h3>
+        <li id="menu1" class="menu__itme"><a href="event_inf.html">공연 전시</a></li>
+        <li id="menu2" class="menu__itme"><a href="promotion.html">홍 보</a></li>
+        <li id="menu3" class="menu__itme"><a href="review.html">후 기</a></li>
+        <li id="menu4" class="menu__itme"><a href="map.html">문화 지도</a></li>
+      </h3>
+    </nav>
+    <div id="mainSearch" class="search">
+      <input class="search__input input" type="text" placeholder="검색어">
+      <button class="search__btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+  </div>
+</th:block>
+</html>
