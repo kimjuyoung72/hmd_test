@@ -27,4 +27,4 @@ create table p_event(
 );
 --alter table p_event add constraint p_event_mt20id_pk primary key(mt20id);
 alter table p_event add constraint p_event_event_id_pk primary key(event_id);
-create sequence event_post_id_seq;
+create sequence p_event_post_id_seq;
