@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="ko"
+<html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>후기</title>
+  <link rel="stylesheet" href="" th:href="@{/css/post/review/addForm.css}">
+<!--  <script defer th:src="@{js/common/ckeditor.js}"></script>-->
+  <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
+  <script defer src="" th:src="@{/js/post/review/addForm.js}"></script>
   <style>
     #pid {
       display: none;
@@ -26,8 +30,8 @@
     <!--    <div><label for="">상품명</label></div>-->
     <div><input type="text" th:field="*{reviewPostWriter}"></div>
     <!--    <div><label for="">수량</label></div>-->
-    <div><input type="text" th:field="*{reviewPostContent}"></div>
-
+<!--    <div><input type="text" th:field="*{reviewPostContent}"></div>-->
+    <div><form action=""><textarea name="" id="" cols="50" rows="5" placeholder="댓글을 입력하세요." th:field="*{reviewPostContent}" th:class="ck-editor__editable"></textarea></form></div>
     <!--파일첨부 첨부-->
 <!--    <div><label th:for="file">설명파일 첨부</label></div>-->
 <!--    <div>-->
@@ -48,7 +52,7 @@
 </div>
 <img width="200px" src="" th:src="@{${form.reviewPostLink}}" alt="">
 
-<div><form action=""><textarea name="" id="" cols="50" rows="5" placeholder="댓글을 입력하세요."></textarea></form></div>
+
 
 <!--파일첨부 참조-->
 <!--<div id="attachFile" th:if="${form.attachFile}">-->

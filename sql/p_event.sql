@@ -25,6 +25,6 @@ create table p_event(
     mt10id	        VARCHAR2(10), --	공연시설ID
     dtguidance	    VARCHAR2(100) --	공연시간 +
 );
---alter table p_event add constraint p_event_mt20id_pk primary key(mt20id);
-alter table p_event add constraint p_event_event_id_pk primary key(event_id);
+alter table p_event add constraint p_event_mt20id_pk primary key(mt20id);
+--alter table p_event add constraint p_event_event_id_pk primary key(event_id);
 create sequence p_event_post_id_seq;

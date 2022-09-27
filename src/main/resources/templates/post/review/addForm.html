@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="ko"
+<html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>후기</title>
+  <link rel="stylesheet" href="" th:href="@{/css/post/review/addForm.css}">
+<!--  <script defer th:src="@{js/common/ckeditor.js}"></script>-->
+  <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
+  <script defer src="" th:src="@{/js/post/review/addForm.js}"></script>
 </head>
 
 <body>
@@ -26,7 +30,7 @@
       <option value="">거주자 우선주차 구역</option>
     </select>
   </div>
-  <div><textarea name="" id="reviewContent" cols="30" rows="10" placeholder="내용을 입력하세요." th:field="*{reviewPostContent}"></textarea></div>
+  <div><textarea name="" id="" cols="30" rows="10" placeholder="내용을 입력하세요." th:field="*{reviewPostContent}" th:class="ck-editor__editable"></textarea></div>
 
 </form>
 <div>
