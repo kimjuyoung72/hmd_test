@@ -15,7 +15,7 @@
 <body>
 <h3>후기등록</h3>
 <hr>
-<form id="addForm" action="" method="post" th:object="${form}">
+<form id="addForm" action="" method="post" th:object="${form}" enctype="multipart/form-data">
 
     <div><label th:for="reviewPostTitle">제목</label></div>
     <div>
@@ -31,15 +31,22 @@
     </select>
   </div>
   <div><textarea name="" id="" cols="30" rows="10" placeholder="내용을 입력하세요." th:field="*{reviewPostContent}" th:class="ck-editor__editable"></textarea></div>
-
+  <div><lable th:for="files">첨부</lable></div>
+  <div><input type="file" th:field="*{files}" multiple></div>
 </form>
 <div>
   <button id="addBtn" type="button">등록</button>
-  <button type="reset">취소</button>
+  <button type="button" id="listBtn" >목록</button>
 </div>
 <script>
+  //등록
   addBtn.addEventListener('click', e => {
     document.getElementById('addForm').submit();
+  });
+
+  //목록
+  listBtn?.addEventListener("click",e=>{
+    location.href = `/reviews`;
   });
 </script>
 </body>

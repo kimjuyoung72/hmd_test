@@ -41,6 +41,13 @@
   <button type="button" id="deleteBtn">삭제</button>
   <button type="button" id="listBtn">목록</button>
 </div>
+<div th:if="${form.files}">
+  <div th:each="file : ${form.files}">
+    <img width="50px" src="http://localhost:9080/attach/img/P0102/82335ef9-18d7-4509-b3d4-df57d8d50a48.jpg"
+         th:src="@{/api/attach/img/{attachCode}/{storeFilename}(attachCode=${file.code},storeFilename=${file.storeFilename})}"
+         alt="이미지를 불러올수 없습니다">
+  </div>
+</div>
 <script th:inline="javascript">
   //수정
   updateBtn.addEventListener('click', evt=>{

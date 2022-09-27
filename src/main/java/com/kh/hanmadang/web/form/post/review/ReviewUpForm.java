@@ -1,5 +1,6 @@
-package com.kh.hanmadang.web.form;
+package com.kh.hanmadang.web.form.post.review;
 
+import com.kh.hanmadang.domain.common.file.UploadFile;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
@@ -9,7 +10,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class ReviewForm {
+public class ReviewUpForm {
   private String reviewFromId;            //관련 공연 ID
   private Long reviewPostId;            //글번호 ID
   private String reviewPostTitle;         //제목
@@ -20,7 +21,7 @@ public class ReviewForm {
   private LocalDateTime udate;            //수정일
   private Integer reviewPostGood;         //좋아요 -_-)b
 
-//  private MultipartFile file; //상품설명 첨부파일(단건)
-  private List<MultipartFile> files;  //상품 이미지 첨부(여러건)
+  private List<MultipartFile> mFiles;  // 이미지 첨부(여러건)
+  private List<UploadFile> files;  // 이미지 첨부(여러건)
 
 }

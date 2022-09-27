@@ -1,9 +1,13 @@
 package com.kh.hanmadang.web.post;
 
 import com.kh.hanmadang.domain.Review;
+import com.kh.hanmadang.domain.common.file.AttachCode;
+import com.kh.hanmadang.domain.common.file.UploadFile;
 import com.kh.hanmadang.domain.common.file.UploadFileSVC;
 import com.kh.hanmadang.domain.svc.post.ReviewPostSVC;
-import com.kh.hanmadang.web.form.ReviewForm;
+import com.kh.hanmadang.web.form.post.review.ReviewAddForm;
+import com.kh.hanmadang.web.form.post.review.ReviewDetailForm;
+import com.kh.hanmadang.web.form.post.review.ReviewUpForm;
 import com.kh.hanmadang.web.session.LoginMember;
 import com.kh.hanmadang.web.session.LoginOkConst;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -32,58 +37,71 @@ public class ReviewPostController {
     @GetMapping("/add")
     public String addForm(Model model) {
 
-      model.addAttribute("form", new ReviewForm());
+      model.addAttribute("form", new ReviewDetailForm());
       return "post/review/addForm";
     }
     //등록
     @PostMapping("/add")
-    public String add(@Valid @ModelAttribute("form") ReviewForm reviewForm,
+    public String add(@Valid @ModelAttribute("form") ReviewAddForm reviewAddForm,
                       BindingResult bindingResult,
                       HttpSession session) {
-      log.info("rForm={}", reviewForm);
 
-      if(bindingResult.hasErrors()){
-        log.info("add/bindingResult={}",bindingResult);
-        return "bbs/addForm";
+      if (bindingResult.hasErrors()) {
+        log.info("bindingResult={}", bindingResult);
+        return "post/review/addForm";
       }
       //세션 가져오기
-      LoginMember loginInfo = (LoginMember)session.getAttribute(LoginOkConst.LOGIN_MEMBER);
+      LoginMember loginInfo = (LoginMember) session.getAttribute(LoginOkConst.LOGIN_MEMBER);
       //세션 정보가 없으면 로그인페이지로 이동
-      if(loginInfo == null){
+      if (loginInfo == null) {
         return "redirect:/login";
       }
 
       Review review = new Review();
 
-      BeanUtils.copyProperties(reviewForm, review);
-      Review addedReview = reviewPostSVC.add(review);
+      BeanUtils.copyProperties(reviewAddForm, review);
+      review.setReviewPostWriter(loginInfo.getName());
+//      review.setReviewPostWriter("김재미");
+      Review addedReview = new Review();
+      if (!reviewAddForm.getFiles().get(0).isEmpty()) {
+        addedReview = reviewPostSVC.add(review, reviewAddForm.getFiles());
+      }else {
 
-      if(!reviewForm.getFiles().get(0).isEmpty()){
-        productId = reviewPostSVC.add(review,addForm().getFiles());
-
-      return "redirect:/reviews/"+addedReview.getReviewPostId();
+        addedReview = reviewPostSVC.add(review);
+      }
+      return "redirect:/reviews/" + addedReview.getReviewPostId();
     }
+
     //수정화면
     @GetMapping("/{pid}/edit")
-    public String editForm(@PathVariable("pid") Long pid,
-                           Model model) {
+    public String editForm(@PathVariable("pid") Long pid, Model model) {
       Review findedReview = reviewPostSVC.findById(pid);
-      ReviewForm reviewForm = new ReviewForm();
-      BeanUtils.copyProperties(findedReview, reviewForm);
-      model.addAttribute("form", reviewForm);
+      ReviewUpForm reviewUpForm = new ReviewUpForm();
+      BeanUtils.copyProperties(findedReview, reviewUpForm);
+      model.addAttribute("form", reviewUpForm);
 
       return "post/review/editForm";
     }
     //수정
     @PostMapping("/{pid}/edit")
-    public String edit(@Valid @ModelAttribute("form") ReviewForm reviewForm,
+    public String edit(@Valid @ModelAttribute("form") ReviewUpForm reviewUpForm,
                        @PathVariable("pid") Long pid,
                        BindingResult bindingResult,
                        RedirectAttributes redirectAttributes) {
 
+      if (bindingResult.hasErrors()) {
+        log.info("bindingResult={}", bindingResult);
+        return "review/editForm";
+      }
+
       Review review = new Review();
-      BeanUtils.copyProperties(reviewForm, review);
-      reviewPostSVC.edit(pid, review);
+      BeanUtils.copyProperties(reviewUpForm, review);
+
+      if (!reviewUpForm.getMFiles().get(0).isEmpty()) {
+        reviewPostSVC.edit(pid, review, reviewUpForm.getMFiles());
+      }else {
+        reviewPostSVC.edit(pid, review);
+      }
 
       redirectAttributes.addAttribute("pid", pid);
       return "redirect:/reviews/{pid}";
@@ -94,9 +112,20 @@ public class ReviewPostController {
                            Model model) {
       Review findedReview = reviewPostSVC.findById(pid);
 
-      ReviewForm reviewForm = new ReviewForm();
-      BeanUtils.copyProperties(findedReview, reviewForm);
-      model.addAttribute("form", reviewForm);
+      ReviewDetailForm reviewDetailForm = new ReviewDetailForm();
+      BeanUtils.copyProperties(findedReview, reviewDetailForm);
+
+      //2-2)상품이미지 조회
+      List<UploadFile> uploadFiles = uploadFileSVC.getFilesByCodeWithRid(AttachCode.B0103.name(), pid);
+      if(uploadFiles.size() > 0 ){
+        List<UploadFile> upFiles = new ArrayList<>();
+        for (UploadFile file : uploadFiles) {
+          upFiles.add(file);
+        }
+        reviewDetailForm.setFiles(upFiles);
+      }
+
+      model.addAttribute("form", reviewDetailForm);
 
       return "post/review/detailForm";
     }

@@ -47,6 +47,13 @@ public class ReviewPostSVCImpl implements ReviewPostSVC{
   }
 
   @Override
+  public int edit(Long pid, Review review, List<MultipartFile> files) {
+    int affectedRow = edit(pid, review);
+    uploadFileSVC.addFile(files, AttachCode.B0103, pid);
+    return affectedRow;
+  }
+
+  @Override
   public Review findById(Long pid) {
 
     return reviewPostDAO.findByPostId(pid);

@@ -33,14 +33,9 @@
 <!--    <div><input type="text" th:field="*{reviewPostContent}"></div>-->
     <div><form action=""><textarea name="" id="" cols="50" rows="5" placeholder="댓글을 입력하세요." th:field="*{reviewPostContent}" th:class="ck-editor__editable"></textarea></form></div>
     <!--파일첨부 첨부-->
-<!--    <div><label th:for="file">설명파일 첨부</label></div>-->
-<!--    <div>-->
-<!--      <input type="file" th:field="*{file}">-->
-<!--      <div class="fieldError" th:errors="*{file}"></div>-->
-<!--    </div>-->
     <div><label th:for="files">파일 첨부</label></div>
     <div>
-      <input type="file" multiple="multiple" th:field="*{files}">
+      <input type="file" multiple="multiple" th:field="*{mFiles}">
       <div class="fieldError" th:errors="*{files}"></div>
     </div>
 
@@ -52,29 +47,18 @@
 </div>
 <img width="200px" src="" th:src="@{${form.reviewPostLink}}" alt="">
 
-
-
 <!--파일첨부 참조-->
-<!--<div id="attachFile" th:if="${form.attachFile}">-->
-<!--  <div th:class="item">-->
-<!--    <a href="http://localhost:9080/attach/file/P0101/34"-->
-<!--       th:href="@{/api/attach/file/{attachCode}/{fid}(attachCode=${form.attachFile.code},fid=${form.attachFile.uploadfileId})}"-->
-<!--       th:text="${form.attachFile.uploadFilename}">상품설명</a>-->
-<!--    &lt;!&ndash;       th:text="|${form.attachFile.uploadFilename}(${form.attachFile.fsize})(${form.attachFile.ftype})|">상품설명</a>&ndash;&gt;-->
-<!--    <a href="" th:data-ftype="attachFile" class="delBtn" th:onclick="|delAttachFile(event,${form.attachFile.uploadfileId})|">삭제</a>-->
-<!--  </div>-->
-<!--</div>-->
-<!--<div id="imageFiles" th:if="${form.imageFiles}">-->
-<!--  <th:block th:each="imageFile : ${form.imageFiles}">-->
-<!--    <div th:class="|item item${imageFileStat.count}|">-->
-<!--      <img width="50px" src="http://localhost:9080/attach/img/P0102/82335ef9-18d7-4509-b3d4-df57d8d50a48.jpg"-->
-<!--           th:src="@{/api/attach/img/{attachCode}/{storeFilename}(attachCode=${imageFile.code},storeFilename=${imageFile.storeFilename})}"-->
-<!--           alt="이미지를 불러올수 없습니다">-->
-<!--      <a href="" th:data-ftype="imageFiles" class="delBtn" th:onclick="|delAttachFile(event,${imageFile.uploadfileId})|">삭제</a>-->
-<!--    </div>-->
-<!--  </th:block>-->
-<!--</div>-->
-<!--</div>-->
+<div id="files" th:if="${form.files}">
+  <th:block th:each="file : ${form.files}">
+    <div th:class="|item item${fileStat.count}|">
+      <img width="50px" src="http://localhost:9080/attach/img/P0102/82335ef9-18d7-4509-b3d4-df57d8d50a48.jpg"
+           th:src="@{/api/attach/img/{attachCode}/{storeFilename}(attachCode=${file.code},storeFilename=${file.storeFilename})}"
+           alt="파일을 불러올수 없습니다">
+      <a href="" th:data-ftype="files" class="delBtn" th:onclick="|delAttachFile(event,${file.uploadfileId})|">삭제</a>
+    </div>
+  </th:block>
+</div>
+
 <script>
     //수정
     const $updateBtn = document.getElementById('updateBtn');

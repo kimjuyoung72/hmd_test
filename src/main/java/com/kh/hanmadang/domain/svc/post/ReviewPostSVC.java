@@ -23,7 +23,7 @@ public interface ReviewPostSVC {
    * @return 수정건수
    */
   int edit(Long pid, Review review);
-
+  int edit(Long pid, Review review, List<MultipartFile> files);
   /**
    * 조회
    * @param pid 글번호
