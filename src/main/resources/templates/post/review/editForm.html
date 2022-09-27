@@ -38,11 +38,11 @@
 <!--      <input type="file" th:field="*{file}">-->
 <!--      <div class="fieldError" th:errors="*{file}"></div>-->
 <!--    </div>-->
-<!--    <div><label th:for="files">이미지 첨부</label></div>-->
-<!--    <div>-->
-<!--      <input type="file" multiple="multiple" th:field="*{files}">-->
-<!--      <div class="fieldError" th:errors="*{files}"></div>-->
-<!--    </div>-->
+    <div><label th:for="files">파일 첨부</label></div>
+    <div>
+      <input type="file" multiple="multiple" th:field="*{files}">
+      <div class="fieldError" th:errors="*{files}"></div>
+    </div>
 
     <div class="product-btngrp">
       <button type="button" id="updateBtn">수정</button>

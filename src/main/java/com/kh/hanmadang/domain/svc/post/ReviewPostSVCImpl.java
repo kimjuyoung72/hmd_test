@@ -1,13 +1,16 @@
 package com.kh.hanmadang.domain.svc.post;
 
 import com.kh.hanmadang.domain.Review;
+import com.kh.hanmadang.domain.common.file.AttachCode;
+import com.kh.hanmadang.domain.common.file.FileUtils;
+import com.kh.hanmadang.domain.common.file.UploadFileSVC;
 import com.kh.hanmadang.domain.dao.post.ReviewPostDAO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -15,6 +18,8 @@ import java.util.Optional;
 public class ReviewPostSVCImpl implements ReviewPostSVC{
 
   private final ReviewPostDAO reviewPostDAO;
+  private final UploadFileSVC uploadFileSVC;
+  private final FileUtils fileUtils;
 
   @Override
   public Review add(Review review) {
@@ -22,6 +27,15 @@ public class ReviewPostSVCImpl implements ReviewPostSVC{
     Long reviewPostId = reviewPostDAO.generateReviewId();
     review.setReviewPostId(reviewPostId);
     reviewPostDAO.add(review);
+    return reviewPostDAO.findByPostId(reviewPostId);
+  }
+
+  @Override
+  public Review add(Review review, List<MultipartFile> files) {
+    Long reviewPostId = reviewPostDAO.generateReviewId();
+    review.setReviewPostId(reviewPostId);
+    reviewPostDAO.add(review);
+    uploadFileSVC.addFile(files, AttachCode.B0103, reviewPostId);
     return reviewPostDAO.findByPostId(reviewPostId);
   }
 

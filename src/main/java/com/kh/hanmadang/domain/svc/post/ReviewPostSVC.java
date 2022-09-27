@@ -1,6 +1,7 @@
 package com.kh.hanmadang.domain.svc.post;
 
 import com.kh.hanmadang.domain.Review;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ public interface ReviewPostSVC {
    */
    Review add(Review review);
 
+   Review add(Review review, List<MultipartFile> files);
   /**
    * 수정
    * @param pid 글번호

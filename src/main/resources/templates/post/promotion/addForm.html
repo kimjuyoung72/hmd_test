@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="ko"
+<html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>홍보</title>
+  <link rel="stylesheet" href="" th:href="@{/css/post/promotion/addForm.css}">
+  <!--  <script defer th:src="@{js/common/ckeditor.js}"></script>-->
+  <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
+  <script defer src="" th:src="@{/js/post/promotion/addForm.js}"></script>
 </head>
 
 <body>
@@ -26,7 +30,7 @@
     <label for="">마감일</label><input type="date" th:field="*{promotionEndDate}">
     <label for="">참가비</label><input type="text" th:field="*{promotionEntFee}">
   </div>
-  <div><textarea name="" id="promotionContent" cols="100" rows="30" placeholder="내용을 입력하세요." th:field="*{promotionPostContent}"></textarea></div>
+  <div><textarea name="" id="" cols="100" rows="30" placeholder="내용을 입력하세요." th:field="*{promotionPostContent}" th:class="ck-editor__editable"></textarea></div>
 
 </form>
 <div>

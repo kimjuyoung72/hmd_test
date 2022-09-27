@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="ko"
+<html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>홍보</title>
+  <link rel="stylesheet" href="" th:href="@{/css/post/promotion/editForm.css}">
+  <!--  <script defer th:src="@{js/common/ckeditor.js}"></script>-->
+  <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
+  <script defer src="" th:src="@{/js/post/promotion/editForm.js}"></script>
 </head>
 
 <body>
@@ -18,13 +22,13 @@
     <div id="pid"><input type="text" th:field="*{promotionPostId}" readonly="readonly"></div>
     <!--    <div><label for="">상품명</label></div>-->
     <div>
-      <label for="">작성자 : </label><input type="text" th:field="*{promotionPostWriter}" readonly="readonly">
-      <label for="">시작일 : </label><input type="date" th:field="*{promotionStartDate}">
-      <label for="">마감일 : </label><input type="date" th:field="*{promotionEndDate}">
-      <label for="">비용 : </label><input type="text" th:field="*{promotionEntFee}">
+      <label for="">작성자:</label><input type="text" th:field="*{promotionPostWriter}" readonly="readonly">
+      <label for="">시작일:</label><input type="date" th:field="*{promotionStartDate}">
+      <label for="">마감일:</label><input type="date" th:field="*{promotionEndDate}">
+      <label for="">비용:</label><input type="text" th:field="*{promotionEntFee}">
     </div>
     <!--    <div><input type="text" th:text="${form.promotionPostWriter}" readonly="readonly"></div>-->
-    <div><textarea name="" id="content" cols="100" rows="25" type="text" th:field="*{promotionPostContent}"></textarea></div>
+    <div><textarea name="" id="" cols="100" rows="25" type="text" th:field="*{promotionPostContent}" th:class="ck-editor__editable"></textarea></div>
 
   </form>
 </div>

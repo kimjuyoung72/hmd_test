@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,8 +20,9 @@
 
 </head>
 
-<body>
-<div class="review_wrap">
+<!--<body>-->
+<th:block  layout:fragment="content">
+<div class="all_container">
   <h3>공연전시</h3>
   <hr>
   <div id="imageFiles" th:if="${list}">
@@ -69,5 +72,6 @@
       location.href = '/events/add';
     });
   </script>
-</body>
+</th:block>
+<!--</body>-->
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html th:fragment="layout (title, content, css, js, style, footer)"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:replace="${title}">Layout Title</title>
+  <!--  common css-->
+  <link rel="stylesheet" href="">
+  <link rel="stylesheet" href="">
+  <!--  common script-->
+  <script></script>
+  <script></script>
+  <!--  page css-->
+  <th:block th:replace="${css}"></th:block>
+  <th:block th:replace="${style}"></th:block>
+  <!--page js-->
+  <th:block th:replace="${js}"></th:block>
+</head>
+<body>
+<h1>
+  Layout H1
+  <div>
+    <!-- 세션에 접근 -->
+    <span th:if="${!session.isEmpty()}" th:text="${session.LoginMember.email}"></span>
+    <span th:if="${!session.isEmpty()}" th:text="${session.LoginMember.nickname}"></span>
+    <span th:if="${!session.isEmpty()}"><a href="" th:href="@{/logout}">로그아웃</a></span>
+  </div>
+</h1>
+<div th:replace="${content}">
+  <p>Layout content</p>
+</div>
+<footer th:replace="${footer}">
+  common footer
+</footer>
+</body>
+</html>

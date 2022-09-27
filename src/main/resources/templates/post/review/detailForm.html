@@ -13,6 +13,9 @@
     #pid {
       display: none;
     }
+    #content {
+      height: 20rem;
+    }
   </style>
 </head>
 
@@ -27,13 +30,12 @@
 <!--    <div><label for="">상품명</label></div>-->
     <div><input type="text" th:field="*{reviewPostWriter}" readonly="readonly"></div>
 <!--    <div><label for="">수량</label></div>-->
-    <div><input type="text" th:field="*{reviewPostContent}" readonly="readonly"></div>
+    <div id="content"><p th:utext="${form.reviewPostContent}"></p></div>
 
   </form>
 </div>
 <img width="200px" src="" th:src="@{${form.reviewPostLink}}" alt="">
 
-<div><form action=""><textarea name="" id="" cols="50" rows="5" placeholder="댓글을 입력하세요."></textarea></form></div>
 <div class="product-btngrp">
   <button type="button" id="updateBtn">수정</button>
   <button type="button" id="deleteBtn">삭제</button>
