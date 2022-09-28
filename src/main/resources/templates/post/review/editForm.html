@@ -22,21 +22,24 @@
 
 <body>
 <h3 th:text="${form.reviewPostTitle}">수정화면</h3>
+<!--<h3>수정</h3>-->
 <hr>
 <div class="product-body">
   <form id="editForm" action="" th:action th:method="post" th:object="${form}" enctype="multipart/form-data">
+
+    <div><input type="text" th:field="*{reviewPostTitle}"></div>
     <!--    <div><label for="">아이디</label></div>-->
     <div id="pid"><input th:field="*{reviewPostId}" readonly="readonly"></div>
     <!--    <div><label for="">상품명</label></div>-->
-    <div><input type="text" th:field="*{reviewPostWriter}"></div>
+    <div><input type="text" th:field="*{reviewPostWriter}" readonly="readonly"></div>
     <!--    <div><label for="">수량</label></div>-->
 <!--    <div><input type="text" th:field="*{reviewPostContent}"></div>-->
     <div><form action=""><textarea name="" id="" cols="50" rows="5" placeholder="댓글을 입력하세요." th:field="*{reviewPostContent}" th:class="ck-editor__editable"></textarea></form></div>
     <!--파일첨부 첨부-->
     <div><label th:for="files">파일 첨부</label></div>
     <div>
-      <input type="file" multiple="multiple" th:field="*{mFiles}">
-      <div class="fieldError" th:errors="*{files}"></div>
+      <input type="file" multiple="multiple" th:field="*{mpFiles}">
+      <div class="fieldError" th:errors="*{mpFiles}"></div>
     </div>
 
     <div class="product-btngrp">

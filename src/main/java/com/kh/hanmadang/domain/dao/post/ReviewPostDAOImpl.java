@@ -39,12 +39,13 @@ public class ReviewPostDAOImpl implements ReviewPostDAO{
     int result = 0;
     StringBuffer sql = new StringBuffer();
     sql.append("update review ");
-    sql.append("   set review_post_content = ?, ");
+    sql.append("   set review_post_title = ?, ");
+    sql.append("       review_post_content = ?, ");
     sql.append("       udate = systimestamp ");
     sql.append(" where review_post_id = ? ");
 //    sql.append("   and pw = ? ");
 
-    result = jt.update(sql.toString(), review.getReviewPostContent(), pid);
+    result = jt.update(sql.toString(), review.getReviewPostTitle(), review.getReviewPostContent(), pid);
     return result;
   }
 

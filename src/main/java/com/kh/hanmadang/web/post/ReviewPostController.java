@@ -82,13 +82,14 @@ public class ReviewPostController {
 
       return "post/review/editForm";
     }
-    //수정
+    //수정======================================================================
     @PostMapping("/{pid}/edit")
     public String edit(@Valid @ModelAttribute("form") ReviewUpForm reviewUpForm,
                        @PathVariable("pid") Long pid,
                        BindingResult bindingResult,
                        RedirectAttributes redirectAttributes) {
 
+      log.info("reviewUpForm={}",reviewUpForm);
       if (bindingResult.hasErrors()) {
         log.info("bindingResult={}", bindingResult);
         return "review/editForm";
@@ -97,16 +98,18 @@ public class ReviewPostController {
       Review review = new Review();
       BeanUtils.copyProperties(reviewUpForm, review);
 
-      if (!reviewUpForm.getMFiles().get(0).isEmpty()) {
-        reviewPostSVC.edit(pid, review, reviewUpForm.getMFiles());
-      }else {
+      if (reviewUpForm.getMpFiles() == null || reviewUpForm.getMpFiles().size() == 0) { /////////////////////////////////
+//      if (!reviewUpForm.getMpFiles().get(0).isEmpty()) { /////////////////////////////////
+
         reviewPostSVC.edit(pid, review);
+      }else {
+        reviewPostSVC.edit(pid, review, reviewUpForm.getMpFiles());
       }
 
       redirectAttributes.addAttribute("pid", pid);
       return "redirect:/reviews/{pid}";
     }
-    //조회
+    //조회=====================================================================
     @GetMapping("/{pid}")
     public String findById(@PathVariable("pid") Long pid,
                            Model model) {
