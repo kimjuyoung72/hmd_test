@@ -89,6 +89,7 @@ public class ReviewPostController {
                        BindingResult bindingResult,
                        RedirectAttributes redirectAttributes) {
 
+
       if (bindingResult.hasErrors()) {
         log.info("bindingResult={}", bindingResult);
         return "review/editForm";
@@ -97,10 +98,16 @@ public class ReviewPostController {
       Review review = new Review();
       BeanUtils.copyProperties(reviewUpForm, review);
 
-      if (!reviewUpForm.getMFiles().get(0).isEmpty()) {
-        reviewPostSVC.edit(pid, review, reviewUpForm.getMFiles());
-      }else {
-        reviewPostSVC.edit(pid, review);
+      log.info("ruf={}", reviewUpForm);
+
+      try {
+        if (reviewUpForm.getMFiles().isEmpty()) {
+          reviewPostSVC.edit(pid, review, reviewUpForm.getMFiles());
+        }else {
+          reviewPostSVC.edit(pid, review);
+        }
+      } catch (NullPointerException e) {
+        System.out.println("null가만두지않겠어!");
       }
 
       redirectAttributes.addAttribute("pid", pid);
