@@ -8,6 +8,7 @@ import com.kh.hanmadang.domain.dao.post.ReviewPostDAO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class ReviewPostSVCImpl implements ReviewPostSVC{
   }
 
   @Override
+  @Transactional
   public Review add(Review review, List<MultipartFile> files) {
     Long reviewPostId = reviewPostDAO.generateReviewId();
     review.setReviewPostId(reviewPostId);
@@ -47,6 +49,7 @@ public class ReviewPostSVCImpl implements ReviewPostSVC{
   }
 
   @Override
+  @Transactional
   public int edit(Long pid, Review review, List<MultipartFile> files) {
     int affectedRow = edit(pid, review);
     uploadFileSVC.addFile(files, AttachCode.B0103, pid);

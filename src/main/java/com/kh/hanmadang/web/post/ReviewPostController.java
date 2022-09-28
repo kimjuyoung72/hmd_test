@@ -100,9 +100,10 @@ public class ReviewPostController {
 
       if (reviewUpForm.getMpFiles() == null || reviewUpForm.getMpFiles().size() == 0) { /////////////////////////////////
 //      if (!reviewUpForm.getMpFiles().get(0).isEmpty()) { /////////////////////////////////
-
+        log.info("file={}", pid);
         reviewPostSVC.edit(pid, review);
       }else {
+        log.info("files={}", pid);
         reviewPostSVC.edit(pid, review, reviewUpForm.getMpFiles());
       }
 
