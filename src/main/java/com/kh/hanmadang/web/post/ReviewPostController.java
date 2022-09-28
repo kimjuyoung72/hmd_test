@@ -82,14 +82,18 @@ public class ReviewPostController {
 
       return "post/review/editForm";
     }
-    //수정
+    //수정======================================================================
     @PostMapping("/{pid}/edit")
     public String edit(@Valid @ModelAttribute("form") ReviewUpForm reviewUpForm,
                        @PathVariable("pid") Long pid,
                        BindingResult bindingResult,
                        RedirectAttributes redirectAttributes) {
 
+<<<<<<< HEAD
 
+=======
+      log.info("reviewUpForm={}",reviewUpForm);
+>>>>>>> e0bd2776b3f8bd4b6b053f5edae29e70428672e6
       if (bindingResult.hasErrors()) {
         log.info("bindingResult={}", bindingResult);
         return "review/editForm";
@@ -98,6 +102,7 @@ public class ReviewPostController {
       Review review = new Review();
       BeanUtils.copyProperties(reviewUpForm, review);
 
+<<<<<<< HEAD
       log.info("ruf={}", reviewUpForm);
 
       try {
@@ -108,12 +113,21 @@ public class ReviewPostController {
         }
       } catch (NullPointerException e) {
         System.out.println("null가만두지않겠어!");
+=======
+      if (reviewUpForm.getMpFiles() == null || reviewUpForm.getMpFiles().size() == 0) { /////////////////////////////////
+//      if (!reviewUpForm.getMpFiles().get(0).isEmpty()) { /////////////////////////////////
+        log.info("file={}", pid);
+        reviewPostSVC.edit(pid, review);
+      }else {
+        log.info("files={}", pid);
+        reviewPostSVC.edit(pid, review, reviewUpForm.getMpFiles());
+>>>>>>> e0bd2776b3f8bd4b6b053f5edae29e70428672e6
       }
 
       redirectAttributes.addAttribute("pid", pid);
       return "redirect:/reviews/{pid}";
     }
-    //조회
+    //조회=====================================================================
     @GetMapping("/{pid}")
     public String findById(@PathVariable("pid") Long pid,
                            Model model) {

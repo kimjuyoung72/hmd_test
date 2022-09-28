@@ -21,7 +21,7 @@ public class ReviewUpForm {
   private LocalDateTime udate;            //수정일
   private Integer reviewPostGood;         //좋아요 -_-)b
 
-  private List<MultipartFile> mFiles;  // 이미지 첨부(여러건)
-  private List<UploadFile> files;  // 이미지 첨부(여러건)
+  private List<MultipartFile> mpFiles;  // 파일 첨부(여러건)
+  private List<UploadFile> files;  // 파일 첨부(여러건)
 
 }

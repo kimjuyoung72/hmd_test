@@ -39,12 +39,13 @@ public class ReviewPostDAOImpl implements ReviewPostDAO{
     int result = 0;
     StringBuffer sql = new StringBuffer();
     sql.append("update review ");
-    sql.append("   set review_post_content = ?, ");
+    sql.append("   set review_post_title = ?, ");
+    sql.append("       review_post_content = ?, ");
     sql.append("       udate = systimestamp ");
     sql.append(" where review_post_id = ? ");
 //    sql.append("   and pw = ? ");
 
-    result = jt.update(sql.toString(), review.getReviewPostContent(), pid);
+    result = jt.update(sql.toString(), review.getReviewPostTitle(), review.getReviewPostContent(), pid);
     return result;
   }
 
@@ -53,9 +54,28 @@ public class ReviewPostDAOImpl implements ReviewPostDAO{
 
     StringBuffer sql = new StringBuffer();
 
-    sql.append("select * ");
+    sql.append("select review_from_id, ");
+    sql.append("       review_post_id, ");
+    sql.append("       review_post_title, ");
+    sql.append("       review_post_link, ");
+    sql.append("       review_post_content, ");
+    sql.append("       review_post_writer, ");
+    sql.append("       cdate, ");
+    sql.append("       udate, ");
+    sql.append("       review_post_good ");
+//    sql.append("select * ");
     sql.append("  from review ");
     sql.append(" where review_post_id = ? ");
+
+//    private String reviewFromId;            //관련 공연 ID
+//    private Long reviewPostId;            //글번호 ID
+//    private String reviewPostTitle;         //제목
+//    private String reviewPostLink;          //홍보이미지 링크
+//    private StringBuffer reviewPostContent; //내용
+//    private String reviewPostWriter;        //작성자
+//    private LocalDateTime cdate;            //작성일
+//    private LocalDateTime udate;            //수정일
+//    private Integer reviewPostGood;         //좋아요 -_-)b
 
     Review findedReview = null;
     try {

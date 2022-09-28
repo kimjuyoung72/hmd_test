@@ -50,6 +50,7 @@ public class ReviewPostSVCImpl implements ReviewPostSVC{
 
   @Transactional
   @Override
+  @Transactional
   public int edit(Long pid, Review review, List<MultipartFile> files) {
     int affectedRow = edit(pid, review);
     uploadFileSVC.addFile(files, AttachCode.B0103, pid);
